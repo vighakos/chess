@@ -1,0 +1,4 @@
+D:\214szft\chess\chess\chess\obj\Debug\chess.csprojAssemblyReference.cache
+D:\214szft\chess\chess\chess\obj\Debug\chess.Properties.Resources.resources
+D:\214szft\chess\chess\chess\obj\Debug\chess.csproj.GenerateResource.cache
+D:\214szft\chess\chess\chess\obj\Debug\chess.csproj.CoreCompileInputs.cache

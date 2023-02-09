@@ -20,6 +20,7 @@ namespace chess
         public void GenerateMap()
         {
             Map = new int[8, 8];
+
         }
     }
 }

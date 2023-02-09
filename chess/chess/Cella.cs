@@ -12,7 +12,6 @@ namespace chess
         public PictureBox Pbox;
         public Babu _Babu;
         public int Sor, Oszlop;
-        public bool Sotet;
 
         public Cella(PictureBox pictureBox, Babu babu, int sor, int oszlop)
         {

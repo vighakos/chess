@@ -2,3 +2,12 @@ D:\214szft\chess\chess\chess\obj\Debug\chess.csprojAssemblyReference.cache
 D:\214szft\chess\chess\chess\obj\Debug\chess.Properties.Resources.resources
 D:\214szft\chess\chess\chess\obj\Debug\chess.csproj.GenerateResource.cache
 D:\214szft\chess\chess\chess\obj\Debug\chess.csproj.CoreCompileInputs.cache
+H:\214szft\aszmo projektek\chess\chess\chess\bin\Debug\chess.exe.config
+H:\214szft\aszmo projektek\chess\chess\chess\bin\Debug\chess.exe
+H:\214szft\aszmo projektek\chess\chess\chess\bin\Debug\chess.pdb
+H:\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.csprojAssemblyReference.cache
+H:\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.Properties.Resources.resources
+H:\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.csproj.GenerateResource.cache
+H:\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.csproj.CoreCompileInputs.cache
+H:\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.exe
+H:\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.pdb

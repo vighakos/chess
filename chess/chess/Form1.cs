@@ -26,17 +26,16 @@ namespace chess
             this.MinimizeBox = false;
             this.Size = new Size(800, 640);
 
-            Size size = new Size(70, 70);
             for (int sor = 0; sor < 8; sor++)
                 for (int oszlop = 0; oszlop < 8; oszlop++)
                 {
-                    bool sotete = sor % 2 == 0 && oszlop % 2 == 0 || sor % 2 == 1 && oszlop % 2 == 1;
+                    bool sotete = (sor + oszlop) % 2 == 0;
                     PictureBox uj = new PictureBox()
                     {
-                        Size = size,
+                        Size = new Size(70, 70),
                         Location = new Point(20 + oszlop * 70, 20 + sor * 70),
                         Name = $"{sor}_{oszlop}",
-                        SizeMode = PictureBoxSizeMode.CenterImage
+                        SizeMode = PictureBoxSizeMode.StretchImage
                     };
 
                     uj.BackColor = sotete ? Color.Black : Color.White;

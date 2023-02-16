@@ -13,19 +13,19 @@ namespace chess
     {
         public string Color, Piece;
         public List<Cella> Lepesek;
+        public bool ElsoLepes;
 
         public Babu(string color, string piece)
         {
             Color = color;
             Piece = piece;
             Lepesek = new List<Cella>();
+            ElsoLepes = true;
         }
 
-        public Image GetImage(string color, string piece)
+        public Image GetImage()
         {
-            string p = $"{color}_{piece}";
-
-            switch (p)
+            switch ($"{Color}_{Piece}")
             {
                 case "white_pawn":
                     return Properties.Resources.white_pawn;

@@ -48,7 +48,7 @@ namespace chess
 
                     Babu ujBabu = new Babu(color, board.GetPiece(board.iMap[sor, oszlop]));
                     board.Map[sor, oszlop] = new Cella(uj, ujBabu, sor, oszlop);
-                    uj.Image = ujBabu.GetImage(ujBabu.Color, ujBabu.Piece);
+                    uj.Image = ujBabu.GetImage();
 
                     uj.Click += new EventHandler(Pb_Click);
                     this.Controls.Add(uj);
@@ -63,7 +63,20 @@ namespace chess
 
             Cella cella = board.Map[koord_x, koord_y];
 
-            MessageBox.Show(cella.Pbox.Image.ToString());
+            MessageBox.Show(cella._Babu.Piece);
+
+            board.Lepesek(cella);
+        }
+
+        private void ClearBoard()
+        {
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    if ((i + j) % 2 != 0) board.Map[i, j].Pbox.BackColor = Color.CornflowerBlue;
+                    else board.Map[i, j].Pbox.BackColor = Color.White;
+                }
+
         }
 
         private void Timer1_Tick(object sender, EventArgs e)

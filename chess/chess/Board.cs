@@ -37,6 +37,58 @@ namespace chess
             Map = new Cella[8, 8];
         }
 
+        public void Lepesek(Cella cella)
+        {
+            cella._Babu.Lepesek.Clear();
+
+            switch (cella._Babu.Piece)
+            {
+                case "pawn":
+                    {
+                        if (cella._Babu.Color == "white")
+                        {
+                            if (cella._Babu.ElsoLepes)
+                            {
+                                if (Map[cella.Sor - 1, cella.Oszlop]._Babu == null)
+                                {
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop]);
+                                    if (Map[cella.Sor - 2, cella.Oszlop]._Babu == null)
+                                        cella._Babu.Lepesek.Add(Map[cella.Sor - 2, cella.Oszlop]);
+                                }
+                            }
+                            else if (cella.Sor - 1 >= 0)
+                            {
+                                if (Map[cella.Sor - 1, cella.Oszlop]._Babu == null)
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop]);
+                            }
+                        }
+                        else
+                        {
+                            if (cella._Babu.ElsoLepes)
+                            {
+                                if (Map[cella.Sor + 1, cella.Oszlop]._Babu == null)
+                                {
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop]);
+                                    if (Map[cella.Sor + 2, cella.Oszlop]._Babu == null)
+                                        cella._Babu.Lepesek.Add(Map[cella.Sor + 2, cella.Oszlop]);
+                                }
+                            }
+                            else if (cella.Sor + 1 < 8)
+                            {
+                                if (Map[cella.Sor + 1, cella.Oszlop]._Babu == null)
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop]);
+                            }
+                        }
+                        
+                        break;
+                    }
+            }
+
+            MessageBox.Show(cella._Babu.Lepesek.Count.ToString());
+            foreach (Cella item in cella._Babu.Lepesek) 
+                item.Pbox.BackColor = Color.LawnGreen;
+        }
+
         public string GetPiece(int x)
         {
             switch (x)

@@ -34,24 +34,25 @@ namespace chess
                 {1, 1, 1, 1, 1, 1, 1, 1},
                 {4, 3, 2, 5, 6, 2, 3, 4}
             };
+            Map = new Cella[8, 8];
         }
 
-        public Image GetPiece(int x)
+        public string GetPiece(int x)
         {
             switch (x)
             {
                 case 1:
-                    return Properties.Resources.pawn;
+                    return "pawn";
                 case 2:
-                    return Properties.Resources.bishop;
+                    return "bishop";
                 case 3:
-                    return Properties.Resources.knight;
+                    return "knight";
                 case 4:
-                    return Properties.Resources.rook;
+                    return "rook";
                 case 5:
-                    return Properties.Resources.queen;
+                    return "queen";
                 case 6:
-                    return Properties.Resources.king;
+                    return "king";
                 case 0:
                 default:
                     return null;

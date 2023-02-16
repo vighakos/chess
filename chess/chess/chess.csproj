@@ -84,22 +84,40 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\king.png" />
+    <None Include="Resources\black_bishop.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\knight.png" />
+    <None Include="Resources\black_king.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pawn.png" />
+    <None Include="Resources\black_knight.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\queen.png" />
+    <None Include="Resources\black_pawn.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\rook.png" />
+    <None Include="Resources\black_queen.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bishop.png" />
+    <None Include="Resources\black_rook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white_bishop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white_king.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white_knight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white_pawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white_queen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white_rook.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -39,13 +39,17 @@ namespace chess
                         Location = new Point(20 + oszlop * 70, 20 + sor * 70),
                         Name = $"{sor}_{oszlop}",
                         SizeMode = PictureBoxSizeMode.StretchImage,
-                        BackColor = sotete ? Color.Black : Color.White,
-                        BackgroundImage = board.GetPiece(board.iMap[sor, oszlop])
+                        BackColor = sotete ? Color.CornflowerBlue : Color.White
                     };
-                    /*
-                    Babu ujBabu = new Babu("light", "a");
+
+                    string color = "";
+                    if (sor == 0 || sor == 1) color = "black";
+                    else if (sor == 6 || sor == 7) color = "white";
+
+                    Babu ujBabu = new Babu(color, board.GetPiece(board.iMap[sor, oszlop]));
                     board.Map[sor, oszlop] = new Cella(uj, ujBabu, sor, oszlop);
-                    */
+                    uj.Image = ujBabu.GetImage(ujBabu.Color, ujBabu.Piece);
+
                     uj.Click += new EventHandler(Pb_Click);
                     this.Controls.Add(uj);
                 }

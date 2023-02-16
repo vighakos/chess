@@ -21,3 +21,4 @@ D:\KI C-sharp\chess\chess\chess\obj\Debug\chess.csproj.GenerateResource.cache
 D:\KI C-sharp\chess\chess\chess\obj\Debug\chess.csproj.CoreCompileInputs.cache
 D:\KI C-sharp\chess\chess\chess\obj\Debug\chess.exe
 D:\KI C-sharp\chess\chess\chess\obj\Debug\chess.pdb
+H:\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.Form1.resources

@@ -15,6 +15,8 @@ namespace chess
         public int m = 0;
         public int s = 0;
         static Board board = new Board();
+        static Cella selectedCella = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -46,9 +48,10 @@ namespace chess
                     if (sor == 0 || sor == 1) color = "black";
                     else if (sor == 6 || sor == 7) color = "white";
 
-                    Babu ujBabu = new Babu(color, board.GetPiece(board.iMap[sor, oszlop]));
+                    Babu ujBabu = color == "" ? null : new Babu(color, board.GetPiece(board.iMap[sor, oszlop]));
                     board.Map[sor, oszlop] = new Cella(uj, ujBabu, sor, oszlop);
-                    uj.Image = ujBabu.GetImage();
+
+                    if (color != "") uj.Image = ujBabu.GetImage();
 
                     uj.Click += new EventHandler(Pb_Click);
                     this.Controls.Add(uj);
@@ -63,9 +66,60 @@ namespace chess
 
             Cella cella = board.Map[koord_x, koord_y];
 
-            MessageBox.Show(cella._Babu.Piece);
+            if (selectedCella == null)
+            {
+                if (cella._Babu != null)
+                {
+                    ClearBoard();
+                    selectedCella = cella;
+                    selectedCella.Pbox.BackColor = Color.IndianRed;
+                    board.Lepesek(cella);
+                }
+                else return;
+            }
+            else if (selectedCella == cella)
+            {
+                ClearBoard();
+                selectedCella = null;
+            }
+            else if (selectedCella != null)
+            {
+                if (cella._Babu == null)
+                {
+                    if (selectedCella == cella)
+                    {
+                        ClearBoard();
+                        selectedCella._Babu.Lepesek.Clear();
+                        selectedCella = null;
+                        return;
+                    } 
+                    else if (selectedCella != cella)
+                    {
+                        if (LepesCheck(cella))
+                        {
+                            ClearBoard();
+                            cella.Pbox.Image = selectedCella.Pbox.Image;
+                            cella._Babu = selectedCella._Babu;
+                            cella._Babu.ElsoLepes = false;
+                            selectedCella._Babu = null;
+                            selectedCella.Pbox.Image = null;
+                            selectedCella = null;
+                        }
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
 
-            board.Lepesek(cella);
+        private bool LepesCheck(Cella cella)
+        {
+            foreach (Cella item in selectedCella._Babu.Lepesek)
+                if (item == cella) return true;
+
+            return false;
         }
 
         private void ClearBoard()

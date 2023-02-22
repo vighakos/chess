@@ -82,11 +82,10 @@ namespace chess
                         
                         break;
                     }
+
             }
 
-            MessageBox.Show(cella._Babu.Lepesek.Count.ToString());
-            foreach (Cella item in cella._Babu.Lepesek) 
-                item.Pbox.BackColor = Color.LawnGreen;
+            foreach (Cella item in cella._Babu.Lepesek) item.Pbox.BackColor = Color.LawnGreen;
         }
 
         public string GetPiece(int x)

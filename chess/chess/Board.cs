@@ -82,6 +82,70 @@ namespace chess
                         
                         break;
                     }
+                case "bishop":
+                    {
+                        /*
+                        for (int sor = cella.Sor - 1; sor >= 0; sor--)
+                        {
+                            if (sor < 0 || cella.Oszlop - sor < 0) break;
+                            if (Map[sor, cella.Oszlop - sor]._Babu == null)
+                            {
+                                cella._Babu.Lepesek.Add(Map[sor, cella.Oszlop - sor]);
+                            }
+                            else break;
+                        }
+                        */
+                        break;
+                    }
+
+                case "knight":
+                    {
+                        if (cella.Sor + 2 < 7  && cella.Oszlop - 1 >= 0 && Map[cella.Sor + 2, cella.Oszlop - 1]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor + 2, cella.Oszlop - 1]);
+
+                        if (cella.Sor + 2 < 7  && cella.Oszlop + 1 < 7 && Map[cella.Sor + 2, cella.Oszlop + 1]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor + 2, cella.Oszlop + 1]);
+
+                        if (cella.Sor - 2 >= 0  && cella.Oszlop - 1 >= 0 && Map[cella.Sor - 2, cella.Oszlop - 1]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor - 2, cella.Oszlop - 1]);
+
+                        if (cella.Sor - 2 >= 0 && cella.Oszlop + 1 < 8 && Map[cella.Sor - 2, cella.Oszlop + 1]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor - 2, cella.Oszlop + 1]);
+
+
+                        if (cella.Sor - 1 >= 0 && cella.Oszlop + 2 < 8 && Map[cella.Sor - 1, cella.Oszlop + 2]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop + 2]);
+
+                        if (cella.Sor - 1 >= 0 && cella.Oszlop - 2 >= 0 && Map[cella.Sor - 1, cella.Oszlop - 2]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop - 2]);
+
+                        if (cella.Sor + 1 < 8 && cella.Oszlop + 2 < 8 && Map[cella.Sor + 1, cella.Oszlop + 2]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop + 2]);
+
+                        if (cella.Sor + 1 < 8 && cella.Oszlop - 2 < 8 && Map[cella.Sor + 1, cella.Oszlop - 2]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop - 2]);
+
+                        break;
+                    }
+
+                case "rook":
+                    {
+
+                        break;
+                    }
+
+                case "queen":
+                    {
+
+                        break;
+                    }
+
+                case "king":
+                    {
+
+                        break;
+                    }
+
 
             }
 

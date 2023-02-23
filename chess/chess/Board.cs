@@ -142,7 +142,29 @@ namespace chess
 
                 case "king":
                     {
+                                if (cella.Sor + 1 < 8 && Map[cella.Sor + 1, cella.Oszlop]._Babu == null)
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop]);
 
+                                if (cella.Sor + 1 < 8 && cella.Oszlop + 1 < 8 && Map[cella.Sor + 1, cella.Oszlop + 1]._Babu == null)
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop + 1]);
+
+                                if (cella.Oszlop + 1 < 8 && Map[cella.Sor, cella.Oszlop + 1]._Babu == null)
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor, cella.Oszlop + 1]);
+
+                                if (cella.Sor - 1 >= 0 && cella.Oszlop + 1 < 8 && Map[cella.Sor - 1, cella.Oszlop + 1]._Babu == null)
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop + 1]);
+
+                                if (cella.Sor - 1 >= 0 && Map[cella.Sor - 1, cella.Oszlop]._Babu == null)
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop]);
+
+                                if (cella.Sor - 1 >= 0 && cella.Oszlop - 1 >= 0 && Map[cella.Sor - 1, cella.Oszlop - 1]._Babu == null)
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop - 1]);
+
+                                if (cella.Oszlop - 1 >= 0 && Map[cella.Sor, cella.Oszlop - 1]._Babu == null)
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor, cella.Oszlop - 1]);
+
+                                if (cella.Sor + 1 < 8 && cella.Oszlop - 1 >= 0 && Map[cella.Sor + 1, cella.Oszlop - 1]._Babu == null)
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop - 1]);
                         break;
                     }
 

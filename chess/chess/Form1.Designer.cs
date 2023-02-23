@@ -44,27 +44,33 @@ namespace chess
             // minLbl
             // 
             this.minLbl.AutoSize = true;
-            this.minLbl.Location = new System.Drawing.Point(718, 9);
+            this.minLbl.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.minLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.minLbl.Location = new System.Drawing.Point(614, 23);
             this.minLbl.Name = "minLbl";
-            this.minLbl.Size = new System.Drawing.Size(19, 13);
+            this.minLbl.Size = new System.Drawing.Size(38, 28);
             this.minLbl.TabIndex = 0;
             this.minLbl.Text = "00";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(743, 9);
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(646, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(10, 13);
+            this.label2.Size = new System.Drawing.Size(18, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = ":";
             // 
             // secLbl
             // 
             this.secLbl.AutoSize = true;
-            this.secLbl.Location = new System.Drawing.Point(759, 9);
+            this.secLbl.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.secLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.secLbl.Location = new System.Drawing.Point(658, 23);
             this.secLbl.Name = "secLbl";
-            this.secLbl.Size = new System.Drawing.Size(19, 13);
+            this.secLbl.Size = new System.Drawing.Size(38, 28);
             this.secLbl.TabIndex = 2;
             this.secLbl.Text = "00";
             // 

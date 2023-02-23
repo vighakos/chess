@@ -25,7 +25,7 @@ namespace chess
 
         private void Setup()
         {
-            this.BackColor = Color.FromArgb(192, 192, 192);
+            this.BackColor = Color.FromArgb(0, 0, 0);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -38,7 +38,7 @@ namespace chess
                     PictureBox uj = new PictureBox()
                     {
                         Size = new Size(70, 70),
-                        Location = new Point(20 + oszlop * 70, 20 + sor * 70),
+                        Location = new Point(20 + oszlop * 71, 20 + sor * 71),
                         Name = $"{sor}_{oszlop}",
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         BackColor = sotete ? Color.CornflowerBlue : Color.White
@@ -72,7 +72,7 @@ namespace chess
                 {
                     ClearBoard();
                     selectedCella = cella;
-                    selectedCella.Pbox.BackColor = Color.IndianRed;
+                    selectedCella.Pbox.BackColor = Color.Goldenrod;
                     board.Lepesek(cella);
                 }
                 else return;

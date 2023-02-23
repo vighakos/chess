@@ -61,6 +61,21 @@ namespace chess
                                 if (Map[cella.Sor - 1, cella.Oszlop]._Babu == null)
                                     cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop]);
                             }
+                            
+                            if (cella.Sor - 1 >= 0 && cella.Oszlop - 1 >= 0)
+                            {
+                                if (Map[cella.Sor - 1, cella.Oszlop - 1]._Babu != null && Map[cella.Sor - 1, cella.Oszlop - 1]._Babu.Color != cella._Babu.Color)
+                                {
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop - 1]);
+                                }
+                            }
+                            else if (cella.Sor - 1 >= 0 && cella.Oszlop + 1 < 8)
+                            {
+                                if (Map[cella.Sor - 1, cella.Oszlop + 1]._Babu != null && Map[cella.Sor - 1, cella.Oszlop + 1]._Babu.Color != cella._Babu.Color)
+                                {
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop + 1]);
+                                }
+                            }
                         }
                         else
                         {
@@ -78,51 +93,57 @@ namespace chess
                                 if (Map[cella.Sor + 1, cella.Oszlop]._Babu == null)
                                     cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop]);
                             }
+
+                            if (cella.Sor + 1 < 8 && cella.Oszlop - 1 >= 0)
+                            {
+                                if (Map[cella.Sor + 1, cella.Oszlop - 1]._Babu != null && Map[cella.Sor + 1, cella.Oszlop - 1]._Babu.Color != cella._Babu.Color)
+                                {
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop - 1]);
+                                }
+                            }
+                            else if (cella.Sor + 1 < 8 && cella.Oszlop + 1 < 8)
+                            {
+                                if (Map[cella.Sor + 1, cella.Oszlop + 1]._Babu != null && Map[cella.Sor + 1, cella.Oszlop + 1]._Babu.Color != cella._Babu.Color)
+                                {
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop + 1]);
+                                }
+                            }
                         }
                         
                         break;
                     }
+
                 case "bishop":
                     {
-                        /*
-                        for (int sor = cella.Sor - 1; sor >= 0; sor--)
-                        {
-                            if (sor < 0 || cella.Oszlop - sor < 0) break;
-                            if (Map[sor, cella.Oszlop - sor]._Babu == null)
-                            {
-                                cella._Babu.Lepesek.Add(Map[sor, cella.Oszlop - sor]);
-                            }
-                            else break;
-                        }
-                        */
+                        
                         break;
                     }
 
                 case "knight":
                     {
-                        if (cella.Sor + 2 < 7  && cella.Oszlop - 1 >= 0 && Map[cella.Sor + 2, cella.Oszlop - 1]._Babu == null)
+                        if (cella.Sor + 2 < 8  && cella.Oszlop - 1 >= 0)
                             cella._Babu.Lepesek.Add(Map[cella.Sor + 2, cella.Oszlop - 1]);
 
-                        if (cella.Sor + 2 < 7  && cella.Oszlop + 1 < 7 && Map[cella.Sor + 2, cella.Oszlop + 1]._Babu == null)
+                        if (cella.Sor + 2 < 8  && cella.Oszlop + 1 < 8)
                             cella._Babu.Lepesek.Add(Map[cella.Sor + 2, cella.Oszlop + 1]);
 
-                        if (cella.Sor - 2 >= 0  && cella.Oszlop - 1 >= 0 && Map[cella.Sor - 2, cella.Oszlop - 1]._Babu == null)
+                        if (cella.Sor - 2 >= 0  && cella.Oszlop - 1 >= 0)
                             cella._Babu.Lepesek.Add(Map[cella.Sor - 2, cella.Oszlop - 1]);
 
-                        if (cella.Sor - 2 >= 0 && cella.Oszlop + 1 < 8 && Map[cella.Sor - 2, cella.Oszlop + 1]._Babu == null)
+                        if (cella.Sor - 2 >= 0 && cella.Oszlop + 1 < 8)
                             cella._Babu.Lepesek.Add(Map[cella.Sor - 2, cella.Oszlop + 1]);
 
 
-                        if (cella.Sor - 1 >= 0 && cella.Oszlop + 2 < 8 && Map[cella.Sor - 1, cella.Oszlop + 2]._Babu == null)
+                        if (cella.Sor - 1 >= 0 && cella.Oszlop + 2 < 8)
                             cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop + 2]);
 
-                        if (cella.Sor - 1 >= 0 && cella.Oszlop - 2 >= 0 && Map[cella.Sor - 1, cella.Oszlop - 2]._Babu == null)
+                        if (cella.Sor - 1 >= 0 && cella.Oszlop - 2 >= 0)
                             cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop - 2]);
 
-                        if (cella.Sor + 1 < 8 && cella.Oszlop + 2 < 8 && Map[cella.Sor + 1, cella.Oszlop + 2]._Babu == null)
+                        if (cella.Sor + 1 < 8 && cella.Oszlop + 2 < 8)
                             cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop + 2]);
 
-                        if (cella.Sor + 1 < 8 && cella.Oszlop - 2 < 8 && Map[cella.Sor + 1, cella.Oszlop - 2]._Babu == null)
+                        if (cella.Sor + 1 < 8 && cella.Oszlop - 2 < 8)
                             cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop - 2]);
 
                         break;
@@ -130,6 +151,61 @@ namespace chess
 
                 case "rook":
                     {
+                        for (int sor = cella.Sor + 1; sor < 8; sor++)
+                        {
+                            if (sor > 7) break;
+
+                            if (Map[sor, cella.Oszlop]._Babu == null)
+                                cella._Babu.Lepesek.Add(Map[sor, cella.Oszlop]);
+                            else if (Map[sor, cella.Oszlop]._Babu.Color == cella._Babu.Color) break;
+                            else if (Map[sor, cella.Oszlop]._Babu.Color != cella._Babu.Color)
+                            {
+                                cella._Babu.Lepesek.Add(Map[sor, cella.Oszlop]);
+                                break;
+                            }
+                        }
+
+                        for (int sor = cella.Sor - 1; sor >= 0; sor--)
+                        {
+                            if (sor < 0) break;
+
+                            if (Map[sor, cella.Oszlop]._Babu == null)
+                                cella._Babu.Lepesek.Add(Map[sor, cella.Oszlop]);
+                            else if (Map[sor, cella.Oszlop]._Babu.Color == cella._Babu.Color) break;
+                            else if (Map[sor, cella.Oszlop]._Babu.Color != cella._Babu.Color)
+                            {
+                                cella._Babu.Lepesek.Add(Map[sor, cella.Oszlop]);
+                                break;
+                            }
+                        }
+
+                        for (int oszlop = cella.Oszlop + 1; oszlop < 8; oszlop++)
+                        {
+                            if (oszlop > 7) break;
+
+                            if (Map[cella.Sor, oszlop]._Babu == null)
+                                cella._Babu.Lepesek.Add(Map[cella.Sor, oszlop]);
+                            else if (Map[cella.Sor, oszlop]._Babu.Color == cella._Babu.Color) break;
+                            else if (Map[cella.Sor, oszlop]._Babu.Color != cella._Babu.Color)
+                            {
+                                cella._Babu.Lepesek.Add(Map[cella.Sor, oszlop]);
+                                break;
+                            }
+                        }
+
+                        for (int oszlop = cella.Oszlop - 1; oszlop >= 0; oszlop--)
+                        {
+                            if (oszlop < 0) break;
+
+                            if (Map[cella.Sor, oszlop]._Babu == null)
+                                cella._Babu.Lepesek.Add(Map[cella.Sor, oszlop]);
+                            else if (Map[cella.Sor, oszlop]._Babu.Color == cella._Babu.Color) break;
+                            else if (Map[cella.Sor, oszlop]._Babu.Color != cella._Babu.Color)
+                            {
+                                cella._Babu.Lepesek.Add(Map[cella.Sor, oszlop]);
+                                break;
+                            }
+                        }
 
                         break;
                     }
@@ -142,14 +218,41 @@ namespace chess
 
                 case "king":
                     {
+                        if (cella.Sor + 1 < 8 && cella.Oszlop + 1 < 8)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop + 1]);
+
+                        if (cella.Sor + 1 < 8 && cella.Oszlop - 1 >= 0)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop - 1]);
+
+                        if (cella.Sor - 1 >= 0 && cella.Oszlop - 1 >= 0)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop - 1]);
+
+                        if (cella.Sor - 1 >= 0 && cella.Oszlop + 1 < 8)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop + 1]);
+
+                        if (cella.Oszlop + 1 < 8)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor, cella.Oszlop + 1]);
+
+                        if (cella.Sor + 1 < 8)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop]);
+
+                        if (cella.Sor - 1 >= 0)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop]);
+
+                        if (cella.Oszlop - 1 >= 0)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor, cella.Oszlop - 1]);
 
                         break;
                     }
-
-
             }
 
-            foreach (Cella item in cella._Babu.Lepesek) item.Pbox.BackColor = Color.LawnGreen;
+            foreach (Cella item in cella._Babu.Lepesek)
+            {
+                if (item._Babu == null)
+                    item.Pbox.BackColor = Color.LawnGreen;
+                else if (item._Babu.Color != cella._Babu.Color)
+                    item.Pbox.BackColor = Color.IndianRed;
+            }
         }
 
         public string GetPiece(int x)

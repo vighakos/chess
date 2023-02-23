@@ -79,7 +79,7 @@ namespace chess
                                     cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop]);
                             }
                         }
-                        
+
                         break;
                     }
                 case "bishop":
@@ -100,13 +100,13 @@ namespace chess
 
                 case "knight":
                     {
-                        if (cella.Sor + 2 < 7  && cella.Oszlop - 1 >= 0 && Map[cella.Sor + 2, cella.Oszlop - 1]._Babu == null)
+                        if (cella.Sor + 2 < 7 && cella.Oszlop - 1 >= 0 && Map[cella.Sor + 2, cella.Oszlop - 1]._Babu == null)
                             cella._Babu.Lepesek.Add(Map[cella.Sor + 2, cella.Oszlop - 1]);
 
-                        if (cella.Sor + 2 < 7  && cella.Oszlop + 1 < 7 && Map[cella.Sor + 2, cella.Oszlop + 1]._Babu == null)
+                        if (cella.Sor + 2 < 7 && cella.Oszlop + 1 < 7 && Map[cella.Sor + 2, cella.Oszlop + 1]._Babu == null)
                             cella._Babu.Lepesek.Add(Map[cella.Sor + 2, cella.Oszlop + 1]);
 
-                        if (cella.Sor - 2 >= 0  && cella.Oszlop - 1 >= 0 && Map[cella.Sor - 2, cella.Oszlop - 1]._Babu == null)
+                        if (cella.Sor - 2 >= 0 && cella.Oszlop - 1 >= 0 && Map[cella.Sor - 2, cella.Oszlop - 1]._Babu == null)
                             cella._Babu.Lepesek.Add(Map[cella.Sor - 2, cella.Oszlop - 1]);
 
                         if (cella.Sor - 2 >= 0 && cella.Oszlop + 1 < 8 && Map[cella.Sor - 2, cella.Oszlop + 1]._Babu == null)
@@ -131,7 +131,73 @@ namespace chess
                 case "rook":
                     {
 
-                        break;
+                        for (int i = cella.Sor + 1; i < 8; i++)
+                        {
+                            if (Map[i, cella.Oszlop]._Babu == null)
+                            {
+                                cella._Babu.Lepesek.Add(Map[i, cella.Oszlop]);
+                            }
+                            else if (Map[i, cella.Oszlop]._Babu.Color != cella._Babu.Color)
+                            {
+                                cella._Babu.Lepesek.Add(Map[i, cella.Oszlop]);
+                                break;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        for (int i = cella.Sor - 1; i >= 0; i--)
+                        {
+                            if (Map[i, cella.Oszlop]._Babu == null)
+                            {
+                                cella._Babu.Lepesek.Add(Map[i, cella.Oszlop]);
+                            }
+                            else if (Map[i, cella.Oszlop]._Babu.Color != cella._Babu.Color)
+                            {
+                                cella._Babu.Lepesek.Add(Map[i, cella.Oszlop]);
+                                break;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        for (int j = cella.Oszlop + 1; j < 8; j++)
+                        {
+                            if (Map[cella.Sor, j]._Babu == null)
+                            {
+                                cella._Babu.Lepesek.Add(Map[cella.Sor, j]);
+                            }
+                            else if (Map[cella.Sor, j]._Babu.Color != cella._Babu.Color)
+                            {
+                                cella._Babu.Lepesek.Add(Map[cella.Sor, j]);
+                                break;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        for (int j = cella.Oszlop - 1; j >= 0; j--)
+                        {
+                            if (Map[cella.Sor, j]._Babu == null)
+                            {
+                                cella._Babu.Lepesek.Add(Map[cella.Sor, j]);
+                            }
+                            else if (Map[cella.Sor, j]._Babu.Color != cella._Babu.Color)
+                            {
+                                cella._Babu.Lepesek.Add(Map[cella.Sor, j]);
+                                break;
+                            }
+                            else
+                            {
+                                break;
+                            }
+
+
+                            
+                        }break;
                     }
 
                 case "queen":
@@ -142,29 +208,29 @@ namespace chess
 
                 case "king":
                     {
-                                if (cella.Sor + 1 < 8 && Map[cella.Sor + 1, cella.Oszlop]._Babu == null)
-                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop]);
+                        if (cella.Sor + 1 < 8 && Map[cella.Sor + 1, cella.Oszlop]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop]);
 
-                                if (cella.Sor + 1 < 8 && cella.Oszlop + 1 < 8 && Map[cella.Sor + 1, cella.Oszlop + 1]._Babu == null)
-                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop + 1]);
+                        if (cella.Sor + 1 < 8 && cella.Oszlop + 1 < 8 && Map[cella.Sor + 1, cella.Oszlop + 1]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop + 1]);
 
-                                if (cella.Oszlop + 1 < 8 && Map[cella.Sor, cella.Oszlop + 1]._Babu == null)
-                                    cella._Babu.Lepesek.Add(Map[cella.Sor, cella.Oszlop + 1]);
+                        if (cella.Oszlop + 1 < 8 && Map[cella.Sor, cella.Oszlop + 1]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor, cella.Oszlop + 1]);
 
-                                if (cella.Sor - 1 >= 0 && cella.Oszlop + 1 < 8 && Map[cella.Sor - 1, cella.Oszlop + 1]._Babu == null)
-                                    cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop + 1]);
+                        if (cella.Sor - 1 >= 0 && cella.Oszlop + 1 < 8 && Map[cella.Sor - 1, cella.Oszlop + 1]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop + 1]);
 
-                                if (cella.Sor - 1 >= 0 && Map[cella.Sor - 1, cella.Oszlop]._Babu == null)
-                                    cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop]);
+                        if (cella.Sor - 1 >= 0 && Map[cella.Sor - 1, cella.Oszlop]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop]);
 
-                                if (cella.Sor - 1 >= 0 && cella.Oszlop - 1 >= 0 && Map[cella.Sor - 1, cella.Oszlop - 1]._Babu == null)
-                                    cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop - 1]);
+                        if (cella.Sor - 1 >= 0 && cella.Oszlop - 1 >= 0 && Map[cella.Sor - 1, cella.Oszlop - 1]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop - 1]);
 
-                                if (cella.Oszlop - 1 >= 0 && Map[cella.Sor, cella.Oszlop - 1]._Babu == null)
-                                    cella._Babu.Lepesek.Add(Map[cella.Sor, cella.Oszlop - 1]);
+                        if (cella.Oszlop - 1 >= 0 && Map[cella.Sor, cella.Oszlop - 1]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor, cella.Oszlop - 1]);
 
-                                if (cella.Sor + 1 < 8 && cella.Oszlop - 1 >= 0 && Map[cella.Sor + 1, cella.Oszlop - 1]._Babu == null)
-                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop - 1]);
+                        if (cella.Sor + 1 < 8 && cella.Oszlop - 1 >= 0 && Map[cella.Sor + 1, cella.Oszlop - 1]._Babu == null)
+                            cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop - 1]);
                         break;
                     }
 

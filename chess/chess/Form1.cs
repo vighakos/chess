@@ -109,6 +109,7 @@ namespace chess
                 }
                 else
                 {
+                    // Leütés
                     return;
                 }
             }

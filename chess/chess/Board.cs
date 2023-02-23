@@ -69,7 +69,7 @@ namespace chess
                                     cella._Babu.Lepesek.Add(Map[cella.Sor - 1, cella.Oszlop - 1]);
                                 }
                             }
-                            else if (cella.Sor - 1 >= 0 && cella.Oszlop + 1 < 8)
+                            if (cella.Sor - 1 >= 0 && cella.Oszlop + 1 < 8)
                             {
                                 if (Map[cella.Sor - 1, cella.Oszlop + 1]._Babu != null && Map[cella.Sor - 1, cella.Oszlop + 1]._Babu.Color != cella._Babu.Color)
                                 {
@@ -92,6 +92,21 @@ namespace chess
                             {
                                 if (Map[cella.Sor + 1, cella.Oszlop]._Babu == null)
                                     cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop]);
+                            }
+
+                            if (cella.Sor + 1 < 8 && cella.Oszlop - 1 >= 0)
+                            {
+                                if (Map[cella.Sor + 1, cella.Oszlop - 1]._Babu != null && Map[cella.Sor + 1, cella.Oszlop - 1]._Babu.Color != cella._Babu.Color)
+                                {
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop - 1]);
+                                }
+                            }
+                            if (cella.Sor + 1 < 8 && cella.Oszlop + 1 < 8)
+                            {
+                                if (Map[cella.Sor + 1, cella.Oszlop + 1]._Babu != null && Map[cella.Sor + 1, cella.Oszlop + 1]._Babu.Color != cella._Babu.Color)
+                                {
+                                    cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop + 1]);
+                                }
                             }
                         }
                         

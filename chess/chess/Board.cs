@@ -202,7 +202,7 @@ namespace chess
                         if (cella.Sor + 1 < 8 && cella.Oszlop + 2 < 8)
                             cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop + 2]);
 
-                        if (cella.Sor + 1 < 8 && cella.Oszlop - 2 < 8)
+                        if (cella.Sor + 1 < 8 && cella.Oszlop - 2 >= 0)
                             cella._Babu.Lepesek.Add(Map[cella.Sor + 1, cella.Oszlop - 2]);
 
                         break;

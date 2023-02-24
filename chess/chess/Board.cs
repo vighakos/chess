@@ -450,5 +450,26 @@ namespace chess
                     return null;
             }
         }
+
+        public bool CheckCheck()
+        {
+            foreach (Cella item in Map)
+            {
+                if (item._Babu != null)
+                {
+                    Lepesek(item);
+                    foreach (Cella item2 in item._Babu.Lepesek)
+                    {
+                        if (item2._Babu.Piece == "king")
+                        {
+                            MessageBox.Show("check");
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }

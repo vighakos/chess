@@ -16,6 +16,8 @@ namespace chess
         public int s = 0;
         static Board board = new Board();
         static Cella selectedCella = null;
+        static List<Cella> KivertBabuk_White = new List<Cella>();
+        static List<Cella> KivertBabuk_Black = new List<Cella>();
 
         public Form1()
         {
@@ -29,7 +31,7 @@ namespace chess
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Size = new Size(800, 640);
+            this.Size = new Size(1050, 640);
             timer1.Start();
             for (int sor = 0; sor < 8; sor++)
                 for (int oszlop = 0; oszlop < 8; oszlop++)
@@ -65,6 +67,7 @@ namespace chess
             int koord_y = Convert.ToInt32(item.Name.Split('_')[1]);
 
             Cella cella = board.Map[koord_x, koord_y];
+            //board.CheckCheck();
 
             if (selectedCella == null)
             {
@@ -107,12 +110,38 @@ namespace chess
                         }
                     }
                 }
+                else if(cella._Babu.Color == selectedCella._Babu.Color) return;
                 else
                 {
-                    // Leütés
+                    Kiver(cella);
                     return;
                 }
             }
+        }
+
+        private void Kiver(Cella cella)
+        {
+            ClearBoard();
+
+            PictureBox uj = new PictureBox()
+            {
+                Size = new Size(25, 25),
+                Location = new Point(600 + (cella._Babu.Color == "white" ? KivertBabuk_White.Count : KivertBabuk_Black.Count) * 26, cella._Babu.Color == "white" ? 70 : 90),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = cella._Babu.GetImage(),
+                BackColor = Color.White
+            };
+            this.Controls.Add(uj);
+
+            if (cella._Babu.Color == "white") KivertBabuk_White.Add(cella);
+            else KivertBabuk_Black.Add(cella);
+
+            cella.Pbox.Image = selectedCella.Pbox.Image;
+            cella._Babu = selectedCella._Babu;
+            cella._Babu.ElsoLepes = false;
+            selectedCella._Babu = null;
+            selectedCella.Pbox.Image = null;
+            selectedCella = null;
         }
 
         private bool LepesCheck(Cella cella)

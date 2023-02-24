@@ -113,7 +113,7 @@ namespace chess
                 else if(cella._Babu.Color == selectedCella._Babu.Color) return;
                 else
                 {
-                    Kiver(cella);
+                    if (LepesCheck(cella)) Kiver(cella);
                     return;
                 }
             }
@@ -126,7 +126,7 @@ namespace chess
             PictureBox uj = new PictureBox()
             {
                 Size = new Size(25, 25),
-                Location = new Point(600 + (cella._Babu.Color == "white" ? KivertBabuk_White.Count : KivertBabuk_Black.Count) * 26, cella._Babu.Color == "white" ? 70 : 90),
+                Location = new Point(600 + (cella._Babu.Color == "white" ? KivertBabuk_White.Count : KivertBabuk_Black.Count) * 26, cella._Babu.Color == "white" ? 70 : 100),
                 SizeMode = PictureBoxSizeMode.StretchImage,
                 Image = cella._Babu.GetImage(),
                 BackColor = Color.White

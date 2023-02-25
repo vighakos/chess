@@ -22,3 +22,13 @@ D:\KI C-sharp\chess\chess\chess\obj\Debug\chess.csproj.CoreCompileInputs.cache
 D:\KI C-sharp\chess\chess\chess\obj\Debug\chess.exe
 D:\KI C-sharp\chess\chess\chess\obj\Debug\chess.pdb
 H:\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.Form1.resources
+X:\a\suli\214szft\aszmo projektek\chess\chess\chess\bin\Debug\chess.exe.config
+X:\a\suli\214szft\aszmo projektek\chess\chess\chess\bin\Debug\chess.exe
+X:\a\suli\214szft\aszmo projektek\chess\chess\chess\bin\Debug\chess.pdb
+X:\a\suli\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.csprojAssemblyReference.cache
+X:\a\suli\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.Form1.resources
+X:\a\suli\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.Properties.Resources.resources
+X:\a\suli\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.csproj.GenerateResource.cache
+X:\a\suli\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.csproj.CoreCompileInputs.cache
+X:\a\suli\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.exe
+X:\a\suli\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.pdb

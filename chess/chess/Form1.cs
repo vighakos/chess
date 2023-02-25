@@ -12,12 +12,11 @@ namespace chess
 {
     public partial class Form1 : Form
     {
-        public int m = 0;
-        public int s = 0;
         static Board board = new Board();
         static Cella selectedCella = null;
         static List<Cella> KivertBabuk_White = new List<Cella>();
         static List<Cella> KivertBabuk_Black = new List<Cella>();
+        static Player p_black = new Player("black"), p_white = new Player("white"), currentPlayer = p_white;
 
         public Form1()
         {
@@ -27,12 +26,10 @@ namespace chess
 
         private void Setup()
         {
-            this.BackColor = Color.FromArgb(0, 0, 0);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Size = new Size(1050, 640);
-            timer1.Start();
+
             for (int sor = 0; sor < 8; sor++)
                 for (int oszlop = 0; oszlop < 8; oszlop++)
                 {
@@ -54,6 +51,8 @@ namespace chess
                     board.Map[sor, oszlop] = new Cella(uj, ujBabu, sor, oszlop);
 
                     if (color != "") uj.Image = ujBabu.GetImage();
+                    else if (color == "white") p_white.Babus.Add(ujBabu);
+                    else if (color == "white") p_black.Babus.Add(ujBabu);
 
                     uj.Click += new EventHandler(Pb_Click);
                     this.Controls.Add(uj);
@@ -67,11 +66,10 @@ namespace chess
             int koord_y = Convert.ToInt32(item.Name.Split('_')[1]);
 
             Cella cella = board.Map[koord_x, koord_y];
-            //board.CheckCheck();
 
             if (selectedCella == null)
             {
-                if (cella._Babu != null)
+                if (cella._Babu != null && cella._Babu.Color == currentPlayer.Color)
                 {
                     ClearBoard();
                     selectedCella = cella;
@@ -92,10 +90,9 @@ namespace chess
                     if (selectedCella == cella)
                     {
                         ClearBoard();
-                        selectedCella._Babu.Lepesek.Clear();
                         selectedCella = null;
                         return;
-                    } 
+                    }
                     else if (selectedCella != cella)
                     {
                         if (LepesCheck(cella))
@@ -107,6 +104,8 @@ namespace chess
                             selectedCella._Babu = null;
                             selectedCella.Pbox.Image = null;
                             selectedCella = null;
+
+                            PlayerSwitch();
                         }
                     }
                 }
@@ -114,27 +113,51 @@ namespace chess
                 else
                 {
                     if (LepesCheck(cella)) Kiver(cella);
+                    PlayerSwitch();
                     return;
                 }
             }
+        }
+
+        private void PlayerSwitch()
+        {
+            if (currentPlayer.Color == "white")
+            {
+                currentPlayer = p_black;
+                nextPlayerLbl.Text = "Fekete játékos következik";
+            }
+            else
+            {
+                currentPlayer = p_white;
+                nextPlayerLbl.Text = "Fehér játékos következik";
+            }
+
+            if (!timer.Enabled) timer.Start();
         }
 
         private void Kiver(Cella cella)
         {
             ClearBoard();
 
-            PictureBox uj = new PictureBox()
+            this.Controls.Add(new PictureBox()
             {
                 Size = new Size(25, 25),
                 Location = new Point(600 + (cella._Babu.Color == "white" ? KivertBabuk_White.Count : KivertBabuk_Black.Count) * 26, cella._Babu.Color == "white" ? 70 : 100),
                 SizeMode = PictureBoxSizeMode.StretchImage,
                 Image = cella._Babu.GetImage(),
                 BackColor = Color.White
-            };
-            this.Controls.Add(uj);
+            });
 
-            if (cella._Babu.Color == "white") KivertBabuk_White.Add(cella);
-            else KivertBabuk_Black.Add(cella);
+            if (cella._Babu.Color == "white") 
+            {
+                KivertBabuk_White.Add(cella);
+                p_white.Babus.Remove(cella._Babu);
+            } 
+            else
+            {
+                KivertBabuk_Black.Add(cella);
+                p_black.Babus.Remove(cella._Babu);
+            } 
 
             cella.Pbox.Image = selectedCella.Pbox.Image;
             cella._Babu = selectedCella._Babu;
@@ -163,29 +186,74 @@ namespace chess
 
         }
 
-        private void Timer1_Tick(object sender, EventArgs e)
+        private void Timer_tick(object sender, EventArgs e)
         {
-            s++;
-            if (s == 60)
+            int min, sec;
+
+            if (currentPlayer.Color == "white")
             {
-                s = 0;
-                m += 1;
+                min = Convert.ToInt32(white_min.Text);
+
+                string secText = white_sec.Text;
+
+                if (secText == "00") sec = 0;
+                else if (secText[0] == '0')
+                {
+                    secText = white_sec.Text[1].ToString();
+                    sec = Convert.ToInt32(secText);
+                }
+                else sec = Convert.ToInt32(white_sec.Text);
             }
-            if (s < 10)
+            else
             {
-                secLbl.Text = "0" + s.ToString();
+                min = Convert.ToInt32(black_min.Text);
+
+                string secText = black_sec.Text;
+
+                if (secText == "00") sec = 0;
+                else if (secText[0] == '0')
+                {
+                    secText = black_sec.Text[1].ToString();
+                    sec = Convert.ToInt32(secText);
+                }
+                else sec = Convert.ToInt32(black_sec.Text);
             }
-            if (s >= 10)
+
+            if (sec == 0 && min == 0)
             {
-                secLbl.Text = s.ToString();
+                timer.Stop();
+                string color = currentPlayer.Color == "white" ? "Fekete" : "Fehér";
+
+                DialogResult a = MessageBox.Show($"{color} játékos nyert! Szeretnél újat kezdeni?", "Lejárt az idő", MessageBoxButtons.YesNo);
+
+                if (a == DialogResult.Yes) Application.Restart();
+                else Application.Exit();
             }
-            if (m < 10)
+
+            if (sec == 0)
             {
-                minLbl.Text = "0" + m.ToString();
+                sec = 59;
+                min--;
             }
-            if (m >= 10)
+            else sec--;
+
+            if (currentPlayer.Color == "white")
             {
-                minLbl.Text = m.ToString();
+                white_min.Text = min.ToString();
+                if (sec < 10)
+                {
+                    white_sec.Text = 0 + sec.ToString();
+                }
+                else white_sec.Text = sec.ToString();
+            }
+            else
+            {
+                black_min.Text = min.ToString();
+                if (sec < 10)
+                {
+                    black_sec.Text = 0 + sec.ToString();
+                }
+                else black_sec.Text = sec.ToString();
             }
         }
     }

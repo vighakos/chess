@@ -17,6 +17,9 @@ namespace chess
         static List<Cella> KivertBabuk_White = new List<Cella>();
         static List<Cella> KivertBabuk_Black = new List<Cella>();
         static Player p_black = new Player("black"), p_white = new Player("white"), currentPlayer = p_white;
+        static bool promotion = false;
+        static List<PictureBox> promotionList;
+        static Cella promote = null;
 
         public Form1()
         {
@@ -67,6 +70,7 @@ namespace chess
 
             Cella cella = board.Map[koord_x, koord_y];
 
+            if (promotion) return;
             if (selectedCella == null)
             {
                 if (cella._Babu != null && cella._Babu.Color == currentPlayer.Color)
@@ -100,10 +104,15 @@ namespace chess
                             ClearBoard();
                             cella.Pbox.Image = selectedCella.Pbox.Image;
                             cella._Babu = selectedCella._Babu;
-                            cella._Babu.ElsoLepes = false;
+                            if (cella._Babu.ElsoLepes) cella._Babu.ElsoLepes = false;
+                            selectedCella.Pbox.Image = null;
                             selectedCella._Babu = null;
                             selectedCella.Pbox.Image = null;
                             selectedCella = null;
+
+                            if (cella._Babu.Piece == "pawn")
+                                if (cella.Sor == 0 && currentPlayer.Color == "white" || cella.Sor == 7 && currentPlayer.Color == "black")
+                                    Promote(cella);
 
                             PlayerSwitch();
                         }
@@ -113,10 +122,71 @@ namespace chess
                 else
                 {
                     if (LepesCheck(cella)) Kiver(cella);
-                    PlayerSwitch();
+
                     return;
                 }
             }
+        }
+
+        private void Promote(Cella cella)
+        {
+            promotion = true;
+            promote = cella;
+            promote.Pbox.BackColor = Color.Goldenrod;
+            nextPlayerLbl.Text = "Válassz egy bábut:";
+
+            promotionList = new List<PictureBox>();
+            PictureBox queen = new PictureBox()
+            {
+                Size = new Size(50, 50),
+                Location = new Point(700, 315),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = currentPlayer.Color == "white" ? Properties.Resources.white_queen : Properties.Resources.black_queen,
+                BackColor = Color.White,
+                Name = "queen"
+            };
+            queen.Click += Promote_Click;
+            promotionList.Add(queen);
+            this.Controls.Add(queen);
+
+            PictureBox rook = new PictureBox()
+            {
+                Size = new Size(50, 50),
+                Location = new Point(755, 315),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = currentPlayer.Color == "white" ? Properties.Resources.white_rook : Properties.Resources.black_rook,
+                BackColor = Color.White,
+                Name = "rook"
+            };
+            rook.Click += Promote_Click;
+            promotionList.Add(rook);
+            this.Controls.Add(rook);
+
+            PictureBox knight = new PictureBox()
+            {
+                Size = new Size(50, 50),
+                Location = new Point(810, 315),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = currentPlayer.Color == "white" ? Properties.Resources.white_knight : Properties.Resources.black_knight,
+                BackColor = Color.White,
+                Name = "knight"
+            };
+            knight.Click += Promote_Click;
+            promotionList.Add(knight);
+            this.Controls.Add(knight);
+
+            PictureBox bishop = new PictureBox()
+            {
+                Size = new Size(50, 50),
+                Location = new Point(865, 315),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = currentPlayer.Color == "white" ? Properties.Resources.white_bishop : Properties.Resources.black_bishop,
+                BackColor = Color.White,
+                Name = "bishop"
+            };
+            bishop.Click += Promote_Click;
+            promotionList.Add(bishop);
+            this.Controls.Add(bishop);
         }
 
         private void PlayerSwitch()
@@ -148,23 +218,24 @@ namespace chess
                 BackColor = Color.White
             });
 
-            if (cella._Babu.Color == "white") 
-            {
-                KivertBabuk_White.Add(cella);
-                p_white.Babus.Remove(cella._Babu);
-            } 
-            else
-            {
-                KivertBabuk_Black.Add(cella);
-                p_black.Babus.Remove(cella._Babu);
-            } 
+            if (cella._Babu.Color == "white") KivertBabuk_White.Add(cella);
+            else KivertBabuk_Black.Add(cella);
 
+            currentPlayer.Babus.Remove(cella._Babu);
             cella.Pbox.Image = selectedCella.Pbox.Image;
             cella._Babu = selectedCella._Babu;
-            cella._Babu.ElsoLepes = false;
+            if (cella._Babu.ElsoLepes) cella._Babu.ElsoLepes = false;
+            selectedCella.Pbox.Image = null;
             selectedCella._Babu = null;
             selectedCella.Pbox.Image = null;
             selectedCella = null;
+
+            if (cella._Babu.Piece == "pawn")
+                if (cella.Sor == 0 && currentPlayer.Color == "white" || cella.Sor == 7 && currentPlayer.Color == "black")
+                    Promote(cella);
+
+
+            if (!promotion) PlayerSwitch();
         }
 
         private bool LepesCheck(Cella cella)
@@ -173,6 +244,23 @@ namespace chess
                 if (item == cella) return true;
 
             return false;
+        }
+
+        private void Promote_Click(object sender, EventArgs e)
+        {
+            PictureBox item = (PictureBox)sender;
+
+            promote.Pbox.Image = item.Image;
+            promote._Babu.Piece = item.Name;
+
+            foreach (PictureBox pbox in promotionList)
+                this.Controls.Remove(pbox);
+
+            ClearBoard();
+
+            promote = null;
+            promotion = false;
+            PlayerSwitch();
         }
 
         private void ClearBoard()

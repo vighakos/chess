@@ -30,6 +30,7 @@ namespace chess
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.black_min = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -135,9 +136,10 @@ namespace chess
             this.Controls.Add(this.black_sec);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.black_min);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Sakk :|";
             this.ResumeLayout(false);
             this.PerformLayout();
 

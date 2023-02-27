@@ -114,7 +114,7 @@ namespace chess
                                 if (cella.Sor == 0 && currentPlayer.Color == "white" || cella.Sor == 7 && currentPlayer.Color == "black")
                                     Promote(cella);
 
-                            PlayerSwitch();
+                            if (!promotion) PlayerSwitch();
                         }
                     }
                 }

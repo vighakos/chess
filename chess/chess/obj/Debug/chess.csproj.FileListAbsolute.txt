@@ -31,4 +31,4 @@ X:\a\suli\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.csproj.Gener
 X:\a\suli\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.csproj.CoreCompileInputs.cache
 X:\a\suli\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.exe
 X:\a\suli\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.pdb
-H:\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.csproj.AssemblyReference.cache
+H:\214szft\aszmo projektek\chess\chess\chess\obj\Debug\chess.csprojAssemblyReference.cache

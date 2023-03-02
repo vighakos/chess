@@ -135,6 +135,11 @@ namespace chess
             promote.Pbox.BackColor = Color.Goldenrod;
             nextPlayerLbl.Text = "Válassz egy bábut:";
 
+            GenerateGenerate();
+        }
+
+        private void GenerateGenerate()
+        {
             promotionList = new List<PictureBox>();
             PictureBox queen = new PictureBox()
             {
